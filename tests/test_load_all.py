@@ -91,9 +91,9 @@ class TestLoadAllMainLoop:
         mock_conn.cursor.return_value = MagicMock()
         return mock_conn
 
-    @patch("snowflake_loader.write_pandas")
+    @patch("load_all.load_csv_chunked")
     @patch("snowflake_loader.get_snowflake_conn")
-    def test_all_tables_attempted(self, mock_conn_fn, mock_wp, tmp_path):
+    def test_all_tables_attempted(self, mock_conn_fn, mock_load, tmp_path):
         """Script iterates all 8 TABLES — every table name is printed."""
         mock_conn_fn.return_value = self._make_mock_conn()
         # CSV files don't exist, so read_csv will raise — that's caught by the script
@@ -105,9 +105,9 @@ class TestLoadAllMainLoop:
         # (we just verify the loop ran — no assertion on stdout needed)
         assert True  # if we get here without an uncaught exception, loop ran
 
-    @patch("snowflake_loader.write_pandas")
+    @patch("load_all.load_csv_chunked")
     @patch("snowflake_loader.get_snowflake_conn")
-    def test_missing_csv_error_is_caught(self, mock_conn_fn, mock_wp, capsys):
+    def test_missing_csv_error_is_caught(self, mock_conn_fn, mock_load, capsys):
         """CSV files don't exist locally — error should be caught, not propagate."""
         mock_conn_fn.return_value = self._make_mock_conn()
         import runpy
@@ -118,9 +118,9 @@ class TestLoadAllMainLoop:
         assert "Loading APPLICATION_TRAIN" in captured.out
         assert "Error loading" in captured.out  # file not found error caught
 
-    @patch("snowflake_loader.write_pandas")
+    @patch("load_all.load_csv_chunked")
     @patch("snowflake_loader.get_snowflake_conn")
-    def test_all_eight_tables_are_announced(self, mock_conn_fn, mock_wp, capsys):
+    def test_all_eight_tables_are_announced(self, mock_conn_fn, mock_load, capsys):
         """Every table name is printed with 'Loading ...' at start of loop."""
         import load_all, runpy
 
@@ -130,9 +130,9 @@ class TestLoadAllMainLoop:
         for table in load_all.TABLES:
             assert f"Loading {table}" in captured.out
 
-    @patch("snowflake_loader.write_pandas")
     @patch("snowflake_loader.get_snowflake_conn")
-    def test_success_path_prints_done(self, mock_conn_fn, mock_wp, tmp_path, capsys):
+    @patch("snowflake_loader.upload_to_s3")
+    def test_success_path_prints_done(self, mock_upload, mock_conn_fn, tmp_path, capsys):
         """When CSV exists, the success branch prints 'Done: TABLE'."""
         import load_all, runpy, importlib
 
