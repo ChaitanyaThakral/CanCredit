@@ -88,7 +88,7 @@ def fetch_boc(start_date: str = START_DATE) -> pd.DataFrame:
     Returns one row per business day with columns:
         date, overnight_rate, bond_2yr, bond_10yr, cadusd, cpi_total
     """
-    print(f"📥 Fetching BOC macro series (start: {start_date})...")
+    print(f" Fetching BOC macro series (start: {start_date})...")
     frames = []
 
     for series_id, col_name in BOC_SERIES.items():
