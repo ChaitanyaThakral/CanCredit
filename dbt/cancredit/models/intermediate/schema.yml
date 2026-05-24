@@ -1,0 +1,183 @@
+version: 2
+
+models:
+  - name: int_bureau_features
+    description: "One row per applicant — aggregated credit bureau features"
+    columns:
+      - name: applicant_id
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('stg_application_train')
+              field: applicant_id
+      - name: bureau_num_records
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: bureau_active_credits
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: bureau_closed_credits
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: bureau_total_credit
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: bureau_total_debt
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: bureau_total_overdue
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: bureau_worst_delinquency
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 5
+      - name: bureau_delinquency_rate
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 1
+
+  - name: int_installment_features
+    description: "One row per applicant — aggregated installment payment features"
+    columns:
+      - name: applicant_id
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('stg_application_train')
+              field: applicant_id
+      - name: inst_num_payments
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: inst_late_count
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: inst_late_rate
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: inst_max_days_late
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: inst_avg_days_late
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: inst_avg_payment_ratio
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: inst_total_underpaid
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+
+  - name: int_credit_card_features
+    description: "One row per applicant — aggregated credit card usage features"
+    columns:
+      - name: applicant_id
+        tests:
+          - not_null
+          - unique
+      - name: cc_num_months
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: cc_avg_utilization
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 3
+      - name: cc_max_utilization
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: cc_avg_monthly_drawings
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: cc_months_overdue
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+
+  - name: int_previous_application_features
+    description: "One row per applicant — aggregated previous application history"
+    columns:
+      - name: applicant_id
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('stg_application_train')
+              field: applicant_id
+      - name: prev_num_applications
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: prev_approved
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: prev_refused
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: prev_refusal_rate
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: prev_avg_credit
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: prev_avg_annuity
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"

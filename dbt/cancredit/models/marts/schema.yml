@@ -1,0 +1,308 @@
+version: 2
+
+models:
+  - name: mart_credit_application_fact
+    description: >
+      Star fact table — one row per applicant with all features joined.
+      Central table for Power BI dashboards and the ML model.
+    columns:
+      - name: applicant_id
+        tests:
+          - not_null
+          - unique
+      - name: default_flag
+        tests:
+          - accepted_values:
+              values: [0, 1]
+      - name: loan_type
+        tests:
+          - not_null
+      - name: loan_amount
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: annual_income
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: credit_to_income_ratio
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: age_years
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 18"
+      - name: credit_risk_segment
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['LOW', 'MEDIUM', 'HIGH', 'VERY_HIGH']
+      - name: composite_risk_score
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: bureau_active_credits
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: bureau_total_debt
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: bureau_total_overdue
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: bureau_delinquency_rate
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: bureau_worst_delinquency
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 5
+      - name: inst_late_rate
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: inst_max_days_late
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: inst_avg_payment_ratio
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: inst_total_underpaid
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: cc_avg_utilization
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 3
+      - name: cc_max_utilization
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: cc_months_overdue
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: prev_num_applications
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: prev_refusal_rate
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: prev_approved
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: dbt_updated_at
+        tests:
+          - not_null
+
+  - name: mart_portfolio_summary
+    description: "Pre-aggregated portfolio metrics grouped by segment dimensions for Power BI"
+    columns:
+      - name: total_applications
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: total_defaults
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: default_rate_pct
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 100
+      - name: avg_loan_amount
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: avg_annual_income
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: avg_dti
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: avg_risk_score
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: credit_risk_segment
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['LOW', 'MEDIUM', 'HIGH', 'VERY_HIGH']
+
+  - name: ml_features_training
+    description: "ML feature store — 19 features for model training, only labelled rows"
+    columns:
+      - name: applicant_id
+        tests:
+          - not_null
+          - unique
+      - name: label
+        tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1]
+      - name: ext_source_1
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: ext_source_2
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: ext_source_3
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: credit_to_income_ratio
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: annuity_to_income_ratio
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: bureau_delinquency_rate
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: bureau_worst_delinquency
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 5
+      - name: bureau_total_overdue
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: inst_late_rate
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: inst_max_days_late
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: inst_avg_payment_ratio
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: cc_avg_utilization
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 3
+      - name: cc_months_overdue
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: prev_refusal_rate
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: prev_num_applications
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: age_years
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 18"
+      - name: years_employed
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: composite_risk_score
+        tests:
+          - not_null
+          - is_between:
+              arguments:
+                min_value: 0
+                max_value: 1

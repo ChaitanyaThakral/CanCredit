@@ -1,0 +1,402 @@
+[0m03:12:28.153162 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C43985490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C4180BD40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C44145100>]}
+
+
+============================== 03:12:28.160430 | 2ecc6cb8-0c26-4e6d-abc2-89e3ce512539 ==============================
+[0m03:12:28.160430 [info ] [MainThread]: Running with dbt=1.11.11
+[0m03:12:28.161438 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\cthak\\.dbt', 'use_colors': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt run --select intermediate', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\cthak\\OneDrive\\Desktop\\CanCredit\\dbt\\cancredit\\logs'}
+[0m03:12:28.939547 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m03:12:28.940568 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m03:12:28.941579 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m03:12:29.098741 [debug] [MainThread]: Snowflake adapter: Replaced underscores (_) with hyphens (-) in Snowflake account name to form a valid account URL.
+[0m03:12:29.442318 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '2ecc6cb8-0c26-4e6d-abc2-89e3ce512539', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C412DAF90>]}
+[0m03:12:29.558809 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '2ecc6cb8-0c26-4e6d-abc2-89e3ce512539', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C46835C40>]}
+[0m03:12:29.561688 [info ] [MainThread]: Registered adapter: snowflake=1.11.5
+[0m03:12:30.038273 [debug] [MainThread]: checksum: 30a8cc8fdcbf66701b0944d4ccce3fa46dd04b61e5df68b9f16d57b2e0e3f0be, vars: {}, profile: , target: , version: 1.11.11
+[0m03:12:30.039260 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m03:12:30.040226 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '2ecc6cb8-0c26-4e6d-abc2-89e3ce512539', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C46BAE9F0>]}
+[0m03:12:30.089317 [warn ] [MainThread]: [[33mWARNING[0m][PropertyMovedToConfigDeprecation]: Deprecated functionality
+Found `freshness` as a top-level property of `sources[0].tables[0]` in file
+`models\staging\sources.yml`. The `freshness` top-level property should be moved
+into the `config` of `sources[0].tables[0]`.
+[0m03:12:30.089317 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '2ecc6cb8-0c26-4e6d-abc2-89e3ce512539', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C46BD77A0>]}
+[0m03:12:35.895764 [warn ] [MainThread]: [[33mWARNING[0m][MissingArgumentsPropertyInGenericTestDeprecation]: Deprecated
+functionality
+Found top-level arguments to test `is_between` defined on
+'int_installment_features' in package 'cancredit'
+(models\intermediate\schema.yml). Arguments to generic tests should be nested
+under the `arguments` property.
+[0m03:12:35.896797 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '2ecc6cb8-0c26-4e6d-abc2-89e3ce512539', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C46F54CE0>]}
+[0m03:12:36.367601 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '2ecc6cb8-0c26-4e6d-abc2-89e3ce512539', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C471049E0>]}
+[0m03:12:36.509298 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\cthak\OneDrive\Desktop\CanCredit\dbt\cancredit\target\manifest.json
+[0m03:12:36.515093 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\cthak\OneDrive\Desktop\CanCredit\dbt\cancredit\target\semantic_manifest.json
+[0m03:12:36.538739 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '2ecc6cb8-0c26-4e6d-abc2-89e3ce512539', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C46AC5070>]}
+[0m03:12:36.539821 [info ] [MainThread]: Found 15 models, 1 snapshot, 13 data tests, 8 sources, 537 macros
+[0m03:12:36.540631 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '2ecc6cb8-0c26-4e6d-abc2-89e3ce512539', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C45900110>]}
+[0m03:12:36.545430 [info ] [MainThread]: 
+[0m03:12:36.545959 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m03:12:36.546515 [info ] [MainThread]: 
+[0m03:12:36.547058 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m03:12:36.552992 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_CANCREDIT_DB'
+[0m03:12:45.064630 [debug] [ThreadPool]: Using snowflake connection "list_CANCREDIT_DB"
+[0m03:12:45.064630 [debug] [ThreadPool]: On list_CANCREDIT_DB: show terse schemas in database CANCREDIT_DB
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB"} */
+[0m03:12:45.065630 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m03:12:47.161516 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: show terse schemas in database CANCREDIT_DB
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB"} */
+[0m03:12:47.162551 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m03:12:47.163546 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: macro list_schemas
+[0m03:12:47.164553 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m03:12:47.166520 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m03:12:47.167136 [debug] [MainThread]: Connection 'list_CANCREDIT_DB' was left open.
+[0m03:12:47.167136 [debug] [MainThread]: On list_CANCREDIT_DB: No close available on handle
+[0m03:12:47.168173 [info ] [MainThread]: 
+[0m03:12:47.170600 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 10.62 seconds (10.62s).
+[0m03:12:47.172273 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Database error while listing schemas in database "CANCREDIT_DB"
+  Database Error
+    290404 (08001): 404 Not Found: post your-account.ca-central-1.aws.snowflakecomputing.com:443/session/v1/login-request
+[0m03:12:47.173951 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- PropertyMovedToConfigDeprecation: 4 occurrences
+- MissingArgumentsPropertyInGenericTestDeprecation: 7 occurrences
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m03:12:47.175088 [debug] [MainThread]: Command `dbt run` failed at 03:12:47.175088 after 19.30 seconds
+[0m03:12:47.176200 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C43C8A270>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C47283920>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C47240F80>]}
+[0m03:12:47.176766 [debug] [MainThread]: Flushing usage events
+[0m03:12:48.573721 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m03:12:52.464719 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C7A7473980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C7A78D7CE0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C7A78D7410>]}
+
+
+============================== 03:12:52.472132 | 88f8ff2a-6b35-437b-9789-9ec657ad86d7 ==============================
+[0m03:12:52.472132 [info ] [MainThread]: Running with dbt=1.11.11
+[0m03:12:52.473465 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\cthak\\.dbt', 'invocation_command': 'dbt test --select intermediate', 'use_colors': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\cthak\\OneDrive\\Desktop\\CanCredit\\dbt\\cancredit\\logs'}
+[0m03:12:53.058154 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m03:12:53.058154 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m03:12:53.059143 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m03:12:53.218847 [debug] [MainThread]: Snowflake adapter: Replaced underscores (_) with hyphens (-) in Snowflake account name to form a valid account URL.
+[0m03:12:53.409173 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '88f8ff2a-6b35-437b-9789-9ec657ad86d7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C7A9F7E570>]}
+[0m03:12:53.493590 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '88f8ff2a-6b35-437b-9789-9ec657ad86d7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C7AA8C9460>]}
+[0m03:12:53.495596 [info ] [MainThread]: Registered adapter: snowflake=1.11.5
+[0m03:12:53.888798 [debug] [MainThread]: checksum: 30a8cc8fdcbf66701b0944d4ccce3fa46dd04b61e5df68b9f16d57b2e0e3f0be, vars: {}, profile: , target: , version: 1.11.11
+[0m03:12:54.119244 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m03:12:54.119244 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m03:12:54.120241 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m03:12:54.193503 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '88f8ff2a-6b35-437b-9789-9ec657ad86d7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C7AAB09F40>]}
+[0m03:12:54.336926 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\cthak\OneDrive\Desktop\CanCredit\dbt\cancredit\target\manifest.json
+[0m03:12:54.339956 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\cthak\OneDrive\Desktop\CanCredit\dbt\cancredit\target\semantic_manifest.json
+[0m03:12:54.372243 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '88f8ff2a-6b35-437b-9789-9ec657ad86d7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C7AB059DC0>]}
+[0m03:12:54.373244 [info ] [MainThread]: Found 15 models, 1 snapshot, 13 data tests, 8 sources, 537 macros
+[0m03:12:54.374016 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '88f8ff2a-6b35-437b-9789-9ec657ad86d7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C7A95A5370>]}
+[0m03:12:54.376201 [info ] [MainThread]: 
+[0m03:12:54.376761 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m03:12:54.377333 [info ] [MainThread]: 
+[0m03:12:54.377884 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m03:12:54.388353 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_CANCREDIT_DB_STAGING'
+[0m03:12:54.409495 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_CANCREDIT_DB_SNAPSHOTS'
+[0m03:12:54.419916 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_CANCREDIT_DB_STAGING_ml_features'
+[0m03:12:54.560133 [debug] [ThreadPool]: Using snowflake connection "list_CANCREDIT_DB_STAGING"
+[0m03:12:54.562111 [debug] [ThreadPool]: Using snowflake connection "list_CANCREDIT_DB_SNAPSHOTS"
+[0m03:12:54.565119 [debug] [ThreadPool]: Using snowflake connection "list_CANCREDIT_DB_STAGING_ml_features"
+[0m03:12:54.566112 [debug] [ThreadPool]: On list_CANCREDIT_DB_STAGING: show objects in CANCREDIT_DB.STAGING
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_STAGING"} */;
+[0m03:12:54.567112 [debug] [ThreadPool]: On list_CANCREDIT_DB_SNAPSHOTS: show objects in CANCREDIT_DB.SNAPSHOTS
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_SNAPSHOTS"} */;
+[0m03:12:54.568112 [debug] [ThreadPool]: On list_CANCREDIT_DB_STAGING_ml_features: show objects in CANCREDIT_DB.STAGING_ml_features
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_STAGING_ml_features"} */;
+[0m03:12:54.568651 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m03:12:54.568651 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m03:12:54.569661 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m03:12:55.912441 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: show objects in CANCREDIT_DB.SNAPSHOTS
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_SNAPSHOTS"} */;
+[0m03:12:55.914441 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m03:12:55.916441 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: macro list_relations_without_caching
+[0m03:12:55.918446 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m03:12:55.921117 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: show objects in CANCREDIT_DB.STAGING
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_STAGING"} */;
+[0m03:12:55.924601 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m03:12:55.925632 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: macro list_relations_without_caching
+[0m03:12:55.926629 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m03:12:56.769596 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: show objects in CANCREDIT_DB.STAGING_ml_features
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_STAGING_ml_features"} */;
+[0m03:12:56.770679 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m03:12:56.771683 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: macro list_relations_without_caching
+[0m03:12:56.772697 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m03:12:56.773693 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m03:12:56.774596 [debug] [MainThread]: Connection 'list_CANCREDIT_DB_STAGING' was left open.
+[0m03:12:56.775597 [debug] [MainThread]: On list_CANCREDIT_DB_STAGING: No close available on handle
+[0m03:12:56.775597 [debug] [MainThread]: Connection 'list_CANCREDIT_DB_SNAPSHOTS' was left open.
+[0m03:12:56.776581 [debug] [MainThread]: On list_CANCREDIT_DB_SNAPSHOTS: No close available on handle
+[0m03:12:56.777590 [debug] [MainThread]: Connection 'list_CANCREDIT_DB_STAGING_ml_features' was left open.
+[0m03:12:56.777590 [debug] [MainThread]: On list_CANCREDIT_DB_STAGING_ml_features: No close available on handle
+[0m03:12:56.777590 [info ] [MainThread]: 
+[0m03:12:56.778715 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 2.40 seconds (2.40s).
+[0m03:12:56.780954 [error] [MainThread]: Encountered an error:
+Database Error
+  290404 (08001): 404 Not Found: post your-account.ca-central-1.aws.snowflakecomputing.com:443/session/v1/login-request
+[0m03:12:56.783647 [debug] [MainThread]: Command `dbt test` failed at 03:12:56.783103 after 4.53 seconds
+[0m03:12:56.784199 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C7A7933710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C7AAFD9A00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C7AB357650>]}
+[0m03:12:56.785362 [debug] [MainThread]: Flushing usage events
+[0m03:12:58.214712 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m03:13:01.986406 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025ED3703AD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025ED3F3BAA0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025ED3CAD220>]}
+
+
+============================== 03:13:01.992840 | 462ce463-b504-4704-a0bd-5c98110989de ==============================
+[0m03:13:01.992840 [info ] [MainThread]: Running with dbt=1.11.11
+[0m03:13:01.993728 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\cthak\\.dbt', 'invocation_command': 'dbt run --select marts', 'use_colors': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\cthak\\OneDrive\\Desktop\\CanCredit\\dbt\\cancredit\\logs'}
+[0m03:13:02.541603 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m03:13:02.542609 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m03:13:02.543602 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m03:13:02.703200 [debug] [MainThread]: Snowflake adapter: Replaced underscores (_) with hyphens (-) in Snowflake account name to form a valid account URL.
+[0m03:13:02.874847 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '462ce463-b504-4704-a0bd-5c98110989de', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025ED153B110>]}
+[0m03:13:02.973751 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '462ce463-b504-4704-a0bd-5c98110989de', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025ED5F8C680>]}
+[0m03:13:02.976085 [info ] [MainThread]: Registered adapter: snowflake=1.11.5
+[0m03:13:03.319426 [debug] [MainThread]: checksum: 30a8cc8fdcbf66701b0944d4ccce3fa46dd04b61e5df68b9f16d57b2e0e3f0be, vars: {}, profile: , target: , version: 1.11.11
+[0m03:13:03.525602 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m03:13:03.526572 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m03:13:03.526572 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m03:13:03.602076 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '462ce463-b504-4704-a0bd-5c98110989de', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025ED6F3CBF0>]}
+[0m03:13:03.746498 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\cthak\OneDrive\Desktop\CanCredit\dbt\cancredit\target\manifest.json
+[0m03:13:03.750126 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\cthak\OneDrive\Desktop\CanCredit\dbt\cancredit\target\semantic_manifest.json
+[0m03:13:03.771265 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '462ce463-b504-4704-a0bd-5c98110989de', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025ED72261E0>]}
+[0m03:13:03.771265 [info ] [MainThread]: Found 15 models, 1 snapshot, 13 data tests, 8 sources, 537 macros
+[0m03:13:03.772648 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '462ce463-b504-4704-a0bd-5c98110989de', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025ED7227D10>]}
+[0m03:13:03.774800 [info ] [MainThread]: 
+[0m03:13:03.775361 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m03:13:03.776285 [info ] [MainThread]: 
+[0m03:13:03.776791 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m03:13:03.785787 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_CANCREDIT_DB'
+[0m03:13:03.796911 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_CANCREDIT_DB'
+[0m03:13:03.881036 [debug] [ThreadPool]: Using snowflake connection "list_CANCREDIT_DB"
+[0m03:13:03.882009 [debug] [ThreadPool]: Using snowflake connection "list_CANCREDIT_DB"
+[0m03:13:03.883032 [debug] [ThreadPool]: On list_CANCREDIT_DB: show terse schemas in database CANCREDIT_DB
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB"} */
+[0m03:13:03.883032 [debug] [ThreadPool]: On list_CANCREDIT_DB: show terse schemas in database CANCREDIT_DB
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB"} */
+[0m03:13:03.884159 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m03:13:03.884159 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m03:13:05.284768 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: show terse schemas in database CANCREDIT_DB
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB"} */
+[0m03:13:05.285777 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m03:13:05.285777 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: macro list_schemas
+[0m03:13:05.286768 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m03:13:06.144638 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: show terse schemas in database CANCREDIT_DB
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB"} */
+[0m03:13:06.145698 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m03:13:06.146741 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: macro list_schemas
+[0m03:13:06.147751 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m03:13:06.150173 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m03:13:06.151639 [debug] [MainThread]: Connection 'list_CANCREDIT_DB' was left open.
+[0m03:13:06.152650 [debug] [MainThread]: On list_CANCREDIT_DB: No close available on handle
+[0m03:13:06.152650 [debug] [MainThread]: Connection 'list_CANCREDIT_DB' was left open.
+[0m03:13:06.153649 [debug] [MainThread]: On list_CANCREDIT_DB: No close available on handle
+[0m03:13:06.153649 [info ] [MainThread]: 
+[0m03:13:06.154649 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 2.38 seconds (2.38s).
+[0m03:13:06.155865 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Database error while listing schemas in database "CANCREDIT_DB"
+  Database Error
+    290404 (08001): 404 Not Found: post your-account.ca-central-1.aws.snowflakecomputing.com:443/session/v1/login-request
+[0m03:13:06.157466 [debug] [MainThread]: Command `dbt run` failed at 03:13:06.156996 after 4.36 seconds
+[0m03:13:06.158993 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025ED58178C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025ED6F96B70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025ED6F3D250>]}
+[0m03:13:06.158993 [debug] [MainThread]: Flushing usage events
+[0m03:13:07.493502 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m03:13:11.220829 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022AAD953E00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022AAAD7D850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022AADA49EE0>]}
+
+
+============================== 03:13:11.228838 | 2fe17cfb-183d-4a0d-93b3-98733549008a ==============================
+[0m03:13:11.228838 [info ] [MainThread]: Running with dbt=1.11.11
+[0m03:13:11.229589 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\cthak\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt snapshot', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\cthak\\OneDrive\\Desktop\\CanCredit\\dbt\\cancredit\\logs'}
+[0m03:13:11.800426 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m03:13:11.800426 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m03:13:11.801471 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m03:13:11.954038 [debug] [MainThread]: Snowflake adapter: Replaced underscores (_) with hyphens (-) in Snowflake account name to form a valid account URL.
+[0m03:13:12.134921 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '2fe17cfb-183d-4a0d-93b3-98733549008a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022AAF1E5520>]}
+[0m03:13:12.218218 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '2fe17cfb-183d-4a0d-93b3-98733549008a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022AAE102210>]}
+[0m03:13:12.219315 [info ] [MainThread]: Registered adapter: snowflake=1.11.5
+[0m03:13:12.565022 [debug] [MainThread]: checksum: 30a8cc8fdcbf66701b0944d4ccce3fa46dd04b61e5df68b9f16d57b2e0e3f0be, vars: {}, profile: , target: , version: 1.11.11
+[0m03:13:12.785966 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m03:13:12.785966 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m03:13:12.786964 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m03:13:12.866211 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '2fe17cfb-183d-4a0d-93b3-98733549008a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022AB08E5040>]}
+[0m03:13:13.007742 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\cthak\OneDrive\Desktop\CanCredit\dbt\cancredit\target\manifest.json
+[0m03:13:13.010748 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\cthak\OneDrive\Desktop\CanCredit\dbt\cancredit\target\semantic_manifest.json
+[0m03:13:13.033893 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '2fe17cfb-183d-4a0d-93b3-98733549008a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022AB0B9AF60>]}
+[0m03:13:13.033893 [info ] [MainThread]: Found 15 models, 1 snapshot, 13 data tests, 8 sources, 537 macros
+[0m03:13:13.035326 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '2fe17cfb-183d-4a0d-93b3-98733549008a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022AB0C08560>]}
+[0m03:13:13.040380 [info ] [MainThread]: 
+[0m03:13:13.041986 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m03:13:13.042437 [info ] [MainThread]: 
+[0m03:13:13.043212 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m03:13:13.044666 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_CANCREDIT_DB'
+[0m03:13:13.135458 [debug] [ThreadPool]: Using snowflake connection "list_CANCREDIT_DB"
+[0m03:13:13.135458 [debug] [ThreadPool]: On list_CANCREDIT_DB: show terse schemas in database CANCREDIT_DB
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB"} */
+[0m03:13:13.136459 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m03:13:14.483346 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: show terse schemas in database CANCREDIT_DB
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB"} */
+[0m03:13:14.484365 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m03:13:14.485346 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: macro list_schemas
+[0m03:13:14.487246 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m03:13:14.489244 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m03:13:14.489244 [debug] [MainThread]: Connection 'list_CANCREDIT_DB' was left open.
+[0m03:13:14.490259 [debug] [MainThread]: On list_CANCREDIT_DB: No close available on handle
+[0m03:13:14.490259 [info ] [MainThread]: 
+[0m03:13:14.491589 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 1.45 seconds (1.45s).
+[0m03:13:14.492096 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Database error while listing schemas in database "CANCREDIT_DB"
+  Database Error
+    290404 (08001): 404 Not Found: post your-account.ca-central-1.aws.snowflakecomputing.com:443/session/v1/login-request
+[0m03:13:14.493827 [debug] [MainThread]: Command `dbt snapshot` failed at 03:13:14.493827 after 3.46 seconds
+[0m03:13:14.494623 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022AAD515400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022AB0C09FD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022AB218B890>]}
+[0m03:13:14.495700 [debug] [MainThread]: Flushing usage events
+[0m03:13:15.835759 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m03:13:20.000043 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000271235ABEF0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000271296B7980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027129A20560>]}
+
+
+============================== 03:13:20.008885 | 23771ec0-2ac1-48bf-9140-ff40605aafd5 ==============================
+[0m03:13:20.008885 [info ] [MainThread]: Running with dbt=1.11.11
+[0m03:13:20.010112 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\cthak\\.dbt', 'use_colors': 'True', 'invocation_command': 'dbt test --select marts', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\cthak\\OneDrive\\Desktop\\CanCredit\\dbt\\cancredit\\logs'}
+[0m03:13:20.578126 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m03:13:20.578126 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m03:13:20.579161 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m03:13:20.727145 [debug] [MainThread]: Snowflake adapter: Replaced underscores (_) with hyphens (-) in Snowflake account name to form a valid account URL.
+[0m03:13:20.894100 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '23771ec0-2ac1-48bf-9140-ff40605aafd5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002712C497D40>]}
+[0m03:13:20.979727 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '23771ec0-2ac1-48bf-9140-ff40605aafd5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027129A23710>]}
+[0m03:13:20.981742 [info ] [MainThread]: Registered adapter: snowflake=1.11.5
+[0m03:13:21.336989 [debug] [MainThread]: checksum: 30a8cc8fdcbf66701b0944d4ccce3fa46dd04b61e5df68b9f16d57b2e0e3f0be, vars: {}, profile: , target: , version: 1.11.11
+[0m03:13:21.576444 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m03:13:21.577433 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m03:13:21.577433 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m03:13:21.672791 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '23771ec0-2ac1-48bf-9140-ff40605aafd5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002712C57B9E0>]}
+[0m03:13:21.841400 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\cthak\OneDrive\Desktop\CanCredit\dbt\cancredit\target\manifest.json
+[0m03:13:21.845406 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\cthak\OneDrive\Desktop\CanCredit\dbt\cancredit\target\semantic_manifest.json
+[0m03:13:21.888315 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '23771ec0-2ac1-48bf-9140-ff40605aafd5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002712CAAA060>]}
+[0m03:13:21.889300 [info ] [MainThread]: Found 15 models, 1 snapshot, 13 data tests, 8 sources, 537 macros
+[0m03:13:21.889929 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '23771ec0-2ac1-48bf-9140-ff40605aafd5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002712C3D4620>]}
+[0m03:13:21.891592 [warn ] [MainThread]: Nothing to do. Try checking your model configs and model specification args
+[0m03:13:21.894471 [debug] [MainThread]: Command end result
+[0m03:13:21.947978 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\cthak\OneDrive\Desktop\CanCredit\dbt\cancredit\target\manifest.json
+[0m03:13:21.954292 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\cthak\OneDrive\Desktop\CanCredit\dbt\cancredit\target\semantic_manifest.json
+[0m03:13:21.959077 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\cthak\OneDrive\Desktop\CanCredit\dbt\cancredit\target\run_results.json
+[0m03:13:21.961093 [debug] [MainThread]: Command `dbt test` succeeded at 03:13:21.960114 after 2.15 seconds
+[0m03:13:21.961093 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000271299B48C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002712B760BC0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027129B2E5A0>]}
+[0m03:13:21.962094 [debug] [MainThread]: Flushing usage events
+[0m03:13:23.437435 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m03:13:27.485573 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024D66A25A60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024D66F44DA0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024D691C52B0>]}
+
+
+============================== 03:13:27.490618 | 9fd415b8-e3e4-4015-87d4-f88f1312e959 ==============================
+[0m03:13:27.490618 [info ] [MainThread]: Running with dbt=1.11.11
+[0m03:13:27.491630 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\cthak\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt docs generate', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\cthak\\OneDrive\\Desktop\\CanCredit\\dbt\\cancredit\\logs'}
+[0m03:13:28.032999 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m03:13:28.032999 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m03:13:28.033999 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m03:13:28.181350 [debug] [MainThread]: Snowflake adapter: Replaced underscores (_) with hyphens (-) in Snowflake account name to form a valid account URL.
+[0m03:13:28.353615 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '9fd415b8-e3e4-4015-87d4-f88f1312e959', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024D691C50D0>]}
+[0m03:13:28.443837 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '9fd415b8-e3e4-4015-87d4-f88f1312e959', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024D6C085730>]}
+[0m03:13:28.447828 [info ] [MainThread]: Registered adapter: snowflake=1.11.5
+[0m03:13:28.831416 [debug] [MainThread]: checksum: 30a8cc8fdcbf66701b0944d4ccce3fa46dd04b61e5df68b9f16d57b2e0e3f0be, vars: {}, profile: , target: , version: 1.11.11
+[0m03:13:29.072662 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m03:13:29.072662 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m03:13:29.073778 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m03:13:29.150084 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '9fd415b8-e3e4-4015-87d4-f88f1312e959', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024D6C5B03E0>]}
+[0m03:13:29.172514 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '9fd415b8-e3e4-4015-87d4-f88f1312e959', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024D6C675E80>]}
+[0m03:13:29.173541 [info ] [MainThread]: Found 15 models, 1 snapshot, 13 data tests, 8 sources, 537 macros
+[0m03:13:29.174813 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '9fd415b8-e3e4-4015-87d4-f88f1312e959', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024D69697E00>]}
+[0m03:13:29.178130 [info ] [MainThread]: 
+[0m03:13:29.179326 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m03:13:29.180510 [info ] [MainThread]: 
+[0m03:13:29.181169 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m03:13:29.190634 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_CANCREDIT_DB_SNAPSHOTS'
+[0m03:13:29.197683 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_CANCREDIT_DB_STAGING'
+[0m03:13:29.222399 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_CANCREDIT_DB_STAGING_ml_features'
+[0m03:13:29.294029 [debug] [ThreadPool]: Using snowflake connection "list_CANCREDIT_DB_SNAPSHOTS"
+[0m03:13:29.296034 [debug] [ThreadPool]: Using snowflake connection "list_CANCREDIT_DB_STAGING"
+[0m03:13:29.297083 [debug] [ThreadPool]: Using snowflake connection "list_CANCREDIT_DB_STAGING_ml_features"
+[0m03:13:29.298226 [debug] [ThreadPool]: On list_CANCREDIT_DB_SNAPSHOTS: show objects in CANCREDIT_DB.SNAPSHOTS
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_SNAPSHOTS"} */;
+[0m03:13:29.299038 [debug] [ThreadPool]: On list_CANCREDIT_DB_STAGING: show objects in CANCREDIT_DB.STAGING
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_STAGING"} */;
+[0m03:13:29.299038 [debug] [ThreadPool]: On list_CANCREDIT_DB_STAGING_ml_features: show objects in CANCREDIT_DB.STAGING_ml_features
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_STAGING_ml_features"} */;
+[0m03:13:29.300144 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m03:13:29.300144 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m03:13:29.301069 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m03:13:30.690679 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: show objects in CANCREDIT_DB.STAGING_ml_features
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_STAGING_ml_features"} */;
+[0m03:13:30.690679 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m03:13:30.691698 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: macro list_relations_without_caching
+[0m03:13:30.691698 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m03:13:30.717151 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: show objects in CANCREDIT_DB.SNAPSHOTS
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_SNAPSHOTS"} */;
+[0m03:13:30.718161 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m03:13:30.718161 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: macro list_relations_without_caching
+[0m03:13:30.719151 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m03:13:31.471814 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: show objects in CANCREDIT_DB.STAGING
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_STAGING"} */;
+[0m03:13:31.471814 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m03:13:31.472814 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: macro list_relations_without_caching
+[0m03:13:31.472814 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m03:13:31.473819 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m03:13:31.474792 [debug] [MainThread]: Connection 'list_CANCREDIT_DB_SNAPSHOTS' was left open.
+[0m03:13:31.474792 [debug] [MainThread]: On list_CANCREDIT_DB_SNAPSHOTS: No close available on handle
+[0m03:13:31.474792 [debug] [MainThread]: Connection 'list_CANCREDIT_DB_STAGING' was left open.
+[0m03:13:31.475797 [debug] [MainThread]: On list_CANCREDIT_DB_STAGING: No close available on handle
+[0m03:13:31.475797 [debug] [MainThread]: Connection 'list_CANCREDIT_DB_STAGING_ml_features' was left open.
+[0m03:13:31.475797 [debug] [MainThread]: On list_CANCREDIT_DB_STAGING_ml_features: No close available on handle
+[0m03:13:31.476792 [error] [MainThread]: Encountered an error:
+Database Error
+  290404 (08001): 404 Not Found: post your-account.ca-central-1.aws.snowflakecomputing.com:443/session/v1/login-request
+[0m03:13:31.479010 [debug] [MainThread]: Command `dbt docs generate` failed at 03:13:31.478326 after 4.18 seconds
+[0m03:13:31.480079 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024D6959B2F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024D6C610980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024D6CA6FF50>]}
+[0m03:13:31.481232 [debug] [MainThread]: Flushing usage events
+[0m03:13:33.028846 [debug] [MainThread]: An error was encountered while trying to flush usage events

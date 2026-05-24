@@ -1,0 +1,189 @@
+version: 2
+
+models:
+  - name: stg_application_train
+    description: "Cleaned and typed loan applications with derived financial ratios"
+    columns:
+      - name: applicant_id
+        tests:
+          - not_null
+          - unique
+      - name: default_flag
+        tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1]
+      - name: loan_amount
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: annual_income
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: credit_to_income_ratio
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: loan_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Cash loans', 'Revolving loans']
+      - name: gender
+        tests:
+          - accepted_values:
+              values: ['M', 'F', 'XNA']
+      - name: age_years
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 18"
+      - name: annuity_to_income_ratio
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: num_children
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+
+  - name: stg_bureau
+    columns:
+      - name: bureau_id
+        tests:
+          - not_null
+      - name: applicant_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_application_train')
+              field: applicant_id
+      - name: credit_status
+        tests:
+          - not_null
+      - name: credit_sum
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: credit_debt
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: credit_overdue
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+
+  - name: stg_bureau_balance
+    columns:
+      - name: bureau_id
+        tests:
+          - not_null
+      - name: status
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['0', '1', '2', '3', '4', '5', 'C', 'X']
+
+  - name: stg_installments_payments
+    columns:
+      - name: applicant_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_application_train')
+              field: applicant_id
+      - name: prev_loan_id
+        tests:
+          - not_null
+      - name: amount_due
+        tests:
+          - not_null
+      - name: amount_paid
+        tests:
+          - not_null
+      - name: days_late
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: is_late
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+      - name: payment_ratio
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+
+  - name: stg_credit_card_balance
+    columns:
+      - name: applicant_id
+        tests:
+          - not_null
+      - name: prev_loan_id
+        tests:
+          - not_null
+      - name: months_balance
+        tests:
+          - not_null
+      - name: days_past_due
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: days_past_due_def
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+
+  - name: stg_previous_application
+    columns:
+      - name: prev_loan_id
+        tests:
+          - not_null
+      - name: applicant_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_application_train')
+              field: applicant_id
+      - name: contract_status
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Approved', 'Refused', 'Canceled', 'Unused offer']
+
+  - name: stg_pos_cash_balance
+    columns:
+      - name: applicant_id
+        tests:
+          - not_null
+      - name: prev_loan_id
+        tests:
+          - not_null
+      - name: months_balance
+        tests:
+          - not_null
+      - name: days_past_due
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: days_past_due_def
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+
+  - name: stg_boc_macro
+    columns:
+      - name: obs_date
+        tests:
+          - not_null
+          - unique

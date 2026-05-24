@@ -1,0 +1,13 @@
+cancredit:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT', 'your_account.ca-central-1.aws') }}"
+      user: "{{ env_var('SNOWFLAKE_USER', 'your_user') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD', 'your_password') }}"
+      role: SYSADMIN
+      database: CANCREDIT_DB
+      warehouse: CANCREDIT_WH
+      schema: STAGING
+      threads: 4

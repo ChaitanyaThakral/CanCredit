@@ -1,0 +1,21 @@
+version: 2
+sources:
+  - name: raw
+    database: CANCREDIT_DB
+    schema: RAW
+    tables:
+      - name: application_train
+        description: "307K loan applications with 122 features and TARGET default label"
+        freshness: {warn_after: {count: 30, period: day}}
+        loaded_at_field: LOADED_AT
+      - name: bureau
+        description: "Credit bureau records per applicant"
+      - name: bureau_balance
+      - name: previous_application
+      - name: pos_cash_balance
+      - name: installments_payments
+      - name: credit_card_balance
+      - name: boc_macro
+        description: "Bank of Canada macro indicators: overnight rate, CPI, bond yields"
+        freshness: {warn_after: {count: 3, period: day}}
+        loaded_at_field: LOADED_AT
