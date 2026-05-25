@@ -13,7 +13,10 @@ def infer_ddl(df: pd.DataFrame, table: str) -> str:
     type_map = {
         'int64': 'NUMBER', 'float64': 'FLOAT',
         'object': 'VARCHAR(500)', 'bool': 'BOOLEAN',
-        'datetime64[ns]': 'TIMESTAMP_NTZ'
+        'datetime64[ns]': 'TIMESTAMP_NTZ',
+        'datetime64[us]': 'TIMESTAMP_NTZ',
+        'datetime64[ms]': 'TIMESTAMP_NTZ',
+        'datetime64[s]':  'TIMESTAMP_NTZ',
     }
     cols = ", ".join([
         f'"{c.upper()}" {type_map.get(str(d), "VARCHAR(500)")}'
