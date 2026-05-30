@@ -1,8 +1,8 @@
 {{ config(materialized='view') }}
 
 SELECT
-    SK_ID_BUREAU                              AS bureau_id,
-    MONTHS_BALANCE                            AS months_balance,
-    STATUS                                    AS status,
-    CURRENT_TIMESTAMP()                       AS dbt_loaded_at
+    SK_ID_BUREAU AS BUREAU_ID,
+    MONTHS_BALANCE,
+    STATUS,
+    CURRENT_TIMESTAMP() AS DBT_LOADED_AT
 FROM {{ source('raw', 'bureau_balance') }}

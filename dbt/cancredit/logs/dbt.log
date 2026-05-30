@@ -32,9 +32,9 @@ under the `arguments` property.
 [0m03:12:36.538739 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '2ecc6cb8-0c26-4e6d-abc2-89e3ce512539', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C46AC5070>]}
 [0m03:12:36.539821 [info ] [MainThread]: Found 15 models, 1 snapshot, 13 data tests, 8 sources, 537 macros
 [0m03:12:36.540631 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '2ecc6cb8-0c26-4e6d-abc2-89e3ce512539', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C45900110>]}
-[0m03:12:36.545430 [info ] [MainThread]: 
+[0m03:12:36.545430 [info ] [MainThread]:
 [0m03:12:36.545959 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
-[0m03:12:36.546515 [info ] [MainThread]: 
+[0m03:12:36.546515 [info ] [MainThread]:
 [0m03:12:36.547058 [debug] [MainThread]: Acquiring new snowflake connection 'master'
 [0m03:12:36.552992 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_CANCREDIT_DB'
 [0m03:12:45.064630 [debug] [ThreadPool]: Using snowflake connection "list_CANCREDIT_DB"
@@ -51,7 +51,7 @@ under the `arguments` property.
 [0m03:12:47.166520 [debug] [MainThread]: Connection 'master' was properly closed.
 [0m03:12:47.167136 [debug] [MainThread]: Connection 'list_CANCREDIT_DB' was left open.
 [0m03:12:47.167136 [debug] [MainThread]: On list_CANCREDIT_DB: No close available on handle
-[0m03:12:47.168173 [info ] [MainThread]: 
+[0m03:12:47.168173 [info ] [MainThread]:
 [0m03:12:47.170600 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 10.62 seconds (10.62s).
 [0m03:12:47.172273 [error] [MainThread]: Encountered an error:
 Runtime Error
@@ -93,9 +93,9 @@ parsing.
 [0m03:12:54.372243 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '88f8ff2a-6b35-437b-9789-9ec657ad86d7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C7AB059DC0>]}
 [0m03:12:54.373244 [info ] [MainThread]: Found 15 models, 1 snapshot, 13 data tests, 8 sources, 537 macros
 [0m03:12:54.374016 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '88f8ff2a-6b35-437b-9789-9ec657ad86d7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C7A95A5370>]}
-[0m03:12:54.376201 [info ] [MainThread]: 
+[0m03:12:54.376201 [info ] [MainThread]:
 [0m03:12:54.376761 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
-[0m03:12:54.377333 [info ] [MainThread]: 
+[0m03:12:54.377333 [info ] [MainThread]:
 [0m03:12:54.377884 [debug] [MainThread]: Acquiring new snowflake connection 'master'
 [0m03:12:54.388353 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_CANCREDIT_DB_STAGING'
 [0m03:12:54.409495 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_CANCREDIT_DB_SNAPSHOTS'
@@ -105,17 +105,17 @@ parsing.
 [0m03:12:54.565119 [debug] [ThreadPool]: Using snowflake connection "list_CANCREDIT_DB_STAGING_ml_features"
 [0m03:12:54.566112 [debug] [ThreadPool]: On list_CANCREDIT_DB_STAGING: show objects in CANCREDIT_DB.STAGING
     limit 10000
-    
+
 
 /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_STAGING"} */;
 [0m03:12:54.567112 [debug] [ThreadPool]: On list_CANCREDIT_DB_SNAPSHOTS: show objects in CANCREDIT_DB.SNAPSHOTS
     limit 10000
-    
+
 
 /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_SNAPSHOTS"} */;
 [0m03:12:54.568112 [debug] [ThreadPool]: On list_CANCREDIT_DB_STAGING_ml_features: show objects in CANCREDIT_DB.STAGING_ml_features
     limit 10000
-    
+
 
 /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_STAGING_ml_features"} */;
 [0m03:12:54.568651 [debug] [ThreadPool]: Opening a new connection, currently in state init
@@ -123,7 +123,7 @@ parsing.
 [0m03:12:54.569661 [debug] [ThreadPool]: Opening a new connection, currently in state init
 [0m03:12:55.912441 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: show objects in CANCREDIT_DB.SNAPSHOTS
     limit 10000
-    
+
 
 /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_SNAPSHOTS"} */;
 [0m03:12:55.914441 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
@@ -131,7 +131,7 @@ parsing.
 [0m03:12:55.918446 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
 [0m03:12:55.921117 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: show objects in CANCREDIT_DB.STAGING
     limit 10000
-    
+
 
 /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_STAGING"} */;
 [0m03:12:55.924601 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
@@ -139,7 +139,7 @@ parsing.
 [0m03:12:55.926629 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
 [0m03:12:56.769596 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: show objects in CANCREDIT_DB.STAGING_ml_features
     limit 10000
-    
+
 
 /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_STAGING_ml_features"} */;
 [0m03:12:56.770679 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
@@ -152,7 +152,7 @@ parsing.
 [0m03:12:56.776581 [debug] [MainThread]: On list_CANCREDIT_DB_SNAPSHOTS: No close available on handle
 [0m03:12:56.777590 [debug] [MainThread]: Connection 'list_CANCREDIT_DB_STAGING_ml_features' was left open.
 [0m03:12:56.777590 [debug] [MainThread]: On list_CANCREDIT_DB_STAGING_ml_features: No close available on handle
-[0m03:12:56.777590 [info ] [MainThread]: 
+[0m03:12:56.777590 [info ] [MainThread]:
 [0m03:12:56.778715 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 2.40 seconds (2.40s).
 [0m03:12:56.780954 [error] [MainThread]: Encountered an error:
 Database Error
@@ -184,9 +184,9 @@ Database Error
 [0m03:13:03.771265 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '462ce463-b504-4704-a0bd-5c98110989de', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025ED72261E0>]}
 [0m03:13:03.771265 [info ] [MainThread]: Found 15 models, 1 snapshot, 13 data tests, 8 sources, 537 macros
 [0m03:13:03.772648 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '462ce463-b504-4704-a0bd-5c98110989de', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025ED7227D10>]}
-[0m03:13:03.774800 [info ] [MainThread]: 
+[0m03:13:03.774800 [info ] [MainThread]:
 [0m03:13:03.775361 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
-[0m03:13:03.776285 [info ] [MainThread]: 
+[0m03:13:03.776285 [info ] [MainThread]:
 [0m03:13:03.776791 [debug] [MainThread]: Acquiring new snowflake connection 'master'
 [0m03:13:03.785787 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_CANCREDIT_DB'
 [0m03:13:03.796911 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_CANCREDIT_DB'
@@ -217,7 +217,7 @@ Database Error
 [0m03:13:06.152650 [debug] [MainThread]: On list_CANCREDIT_DB: No close available on handle
 [0m03:13:06.152650 [debug] [MainThread]: Connection 'list_CANCREDIT_DB' was left open.
 [0m03:13:06.153649 [debug] [MainThread]: On list_CANCREDIT_DB: No close available on handle
-[0m03:13:06.153649 [info ] [MainThread]: 
+[0m03:13:06.153649 [info ] [MainThread]:
 [0m03:13:06.154649 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 2.38 seconds (2.38s).
 [0m03:13:06.155865 [error] [MainThread]: Encountered an error:
 Runtime Error
@@ -251,9 +251,9 @@ Runtime Error
 [0m03:13:13.033893 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '2fe17cfb-183d-4a0d-93b3-98733549008a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022AB0B9AF60>]}
 [0m03:13:13.033893 [info ] [MainThread]: Found 15 models, 1 snapshot, 13 data tests, 8 sources, 537 macros
 [0m03:13:13.035326 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '2fe17cfb-183d-4a0d-93b3-98733549008a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022AB0C08560>]}
-[0m03:13:13.040380 [info ] [MainThread]: 
+[0m03:13:13.040380 [info ] [MainThread]:
 [0m03:13:13.041986 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
-[0m03:13:13.042437 [info ] [MainThread]: 
+[0m03:13:13.042437 [info ] [MainThread]:
 [0m03:13:13.043212 [debug] [MainThread]: Acquiring new snowflake connection 'master'
 [0m03:13:13.044666 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_CANCREDIT_DB'
 [0m03:13:13.135458 [debug] [ThreadPool]: Using snowflake connection "list_CANCREDIT_DB"
@@ -270,7 +270,7 @@ Runtime Error
 [0m03:13:14.489244 [debug] [MainThread]: Connection 'master' was properly closed.
 [0m03:13:14.489244 [debug] [MainThread]: Connection 'list_CANCREDIT_DB' was left open.
 [0m03:13:14.490259 [debug] [MainThread]: On list_CANCREDIT_DB: No close available on handle
-[0m03:13:14.490259 [info ] [MainThread]: 
+[0m03:13:14.490259 [info ] [MainThread]:
 [0m03:13:14.491589 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 1.45 seconds (1.45s).
 [0m03:13:14.492096 [error] [MainThread]: Encountered an error:
 Runtime Error
@@ -334,9 +334,9 @@ Runtime Error
 [0m03:13:29.172514 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '9fd415b8-e3e4-4015-87d4-f88f1312e959', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024D6C675E80>]}
 [0m03:13:29.173541 [info ] [MainThread]: Found 15 models, 1 snapshot, 13 data tests, 8 sources, 537 macros
 [0m03:13:29.174813 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '9fd415b8-e3e4-4015-87d4-f88f1312e959', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024D69697E00>]}
-[0m03:13:29.178130 [info ] [MainThread]: 
+[0m03:13:29.178130 [info ] [MainThread]:
 [0m03:13:29.179326 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
-[0m03:13:29.180510 [info ] [MainThread]: 
+[0m03:13:29.180510 [info ] [MainThread]:
 [0m03:13:29.181169 [debug] [MainThread]: Acquiring new snowflake connection 'master'
 [0m03:13:29.190634 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_CANCREDIT_DB_SNAPSHOTS'
 [0m03:13:29.197683 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_CANCREDIT_DB_STAGING'
@@ -346,17 +346,17 @@ Runtime Error
 [0m03:13:29.297083 [debug] [ThreadPool]: Using snowflake connection "list_CANCREDIT_DB_STAGING_ml_features"
 [0m03:13:29.298226 [debug] [ThreadPool]: On list_CANCREDIT_DB_SNAPSHOTS: show objects in CANCREDIT_DB.SNAPSHOTS
     limit 10000
-    
+
 
 /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_SNAPSHOTS"} */;
 [0m03:13:29.299038 [debug] [ThreadPool]: On list_CANCREDIT_DB_STAGING: show objects in CANCREDIT_DB.STAGING
     limit 10000
-    
+
 
 /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_STAGING"} */;
 [0m03:13:29.299038 [debug] [ThreadPool]: On list_CANCREDIT_DB_STAGING_ml_features: show objects in CANCREDIT_DB.STAGING_ml_features
     limit 10000
-    
+
 
 /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_STAGING_ml_features"} */;
 [0m03:13:29.300144 [debug] [ThreadPool]: Opening a new connection, currently in state init
@@ -364,7 +364,7 @@ Runtime Error
 [0m03:13:29.301069 [debug] [ThreadPool]: Opening a new connection, currently in state init
 [0m03:13:30.690679 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: show objects in CANCREDIT_DB.STAGING_ml_features
     limit 10000
-    
+
 
 /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_STAGING_ml_features"} */;
 [0m03:13:30.690679 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
@@ -372,7 +372,7 @@ Runtime Error
 [0m03:13:30.691698 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
 [0m03:13:30.717151 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: show objects in CANCREDIT_DB.SNAPSHOTS
     limit 10000
-    
+
 
 /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_SNAPSHOTS"} */;
 [0m03:13:30.718161 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
@@ -380,7 +380,7 @@ Runtime Error
 [0m03:13:30.719151 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
 [0m03:13:31.471814 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: show objects in CANCREDIT_DB.STAGING
     limit 10000
-    
+
 
 /* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "cancredit", "target_name": "dev", "connection_name": "list_CANCREDIT_DB_STAGING"} */;
 [0m03:13:31.471814 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.

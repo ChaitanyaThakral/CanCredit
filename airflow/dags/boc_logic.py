@@ -3,11 +3,12 @@ boc_logic.py — Pure Python business logic extracted from the BOC DAG.
 No Airflow imports here, so this module is fully unit-testable without
 an Airflow installation.  The DAG imports these functions directly.
 """
+
 import requests
 import pandas as pd
 
 
-def fetch_latest_boc(last_date: str, output_path: str = '/tmp/boc_latest.csv') -> int:
+def fetch_latest_boc(last_date: str, output_path: str = "/tmp/boc_latest.csv") -> int:
     """
     Fetch BOC observations since `last_date` and write them to `output_path`.
 
@@ -19,16 +20,16 @@ def fetch_latest_boc(last_date: str, output_path: str = '/tmp/boc_latest.csv') -
         Number of observation rows fetched.
     """
     url = "https://www.bankofcanada.ca/valet/observations/group/bond_yields_all_en/json"
-    resp = requests.get(url, params={'start_date': last_date}, timeout=30)
+    resp = requests.get(url, params={"start_date": last_date}, timeout=30)
     resp.raise_for_status()
     data = resp.json()
 
     rows = [
         {
-            'obs_date': o['d'],
-            **{k: v.get('v') for k, v in o.items() if k != 'd' and isinstance(v, dict)}
+            "obs_date": o["d"],
+            **{k: v.get("v") for k, v in o.items() if k != "d" and isinstance(v, dict)},
         }
-        for o in data.get('observations', [])
+        for o in data.get("observations", [])
     ]
     df = pd.DataFrame(rows)
     df.to_csv(output_path, index=False)
@@ -45,4 +46,4 @@ def branch_on_rows(row_count) -> str:
     Returns:
         'load_boc' if there is new data, 'skip_boc' otherwise.
     """
-    return 'load_boc' if row_count and row_count > 0 else 'skip_boc'
+    return "load_boc" if row_count and row_count > 0 else "skip_boc"

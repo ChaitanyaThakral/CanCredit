@@ -1,19 +1,33 @@
 -- Use a dynamic NULL profiling query across columns — demonstrates SQL maturity
 SELECT
-    'AMT_INCOME_TOTAL'      AS col, COUNT(*) - COUNT(AMT_INCOME_TOTAL)      AS nulls,
-    ROUND((COUNT(*) - COUNT(AMT_INCOME_TOTAL))::FLOAT / COUNT(*) * 100, 1) AS null_pct
-FROM CANCREDIT_DB.RAW.APPLICATION_TRAIN
+    'AMT_INCOME_TOTAL' AS col,
+    COUNT(*) - COUNT(amt_income_total) AS nulls,
+    ROUND((COUNT(*) - COUNT(amt_income_total))::FLOAT / COUNT(*) * 100, 1)
+        AS null_pct
+FROM cancredit_db.raw.application_train
 UNION ALL
-SELECT 'EXT_SOURCE_1', COUNT(*)-COUNT(EXT_SOURCE_1),
-    ROUND((COUNT(*)-COUNT(EXT_SOURCE_1))::FLOAT/COUNT(*)*100,1) FROM CANCREDIT_DB.RAW.APPLICATION_TRAIN
+SELECT
+    'EXT_SOURCE_1',
+    COUNT(*) - COUNT(ext_source_1),
+    ROUND((COUNT(*) - COUNT(ext_source_1))::FLOAT / COUNT(*) * 100, 1)
+FROM cancredit_db.raw.application_train
 UNION ALL
-SELECT 'EXT_SOURCE_2', COUNT(*)-COUNT(EXT_SOURCE_2),
-    ROUND((COUNT(*)-COUNT(EXT_SOURCE_2))::FLOAT/COUNT(*)*100,1) FROM CANCREDIT_DB.RAW.APPLICATION_TRAIN
+SELECT
+    'EXT_SOURCE_2',
+    COUNT(*) - COUNT(ext_source_2),
+    ROUND((COUNT(*) - COUNT(ext_source_2))::FLOAT / COUNT(*) * 100, 1)
+FROM cancredit_db.raw.application_train
 UNION ALL
-SELECT 'EXT_SOURCE_3', COUNT(*)-COUNT(EXT_SOURCE_3),
-    ROUND((COUNT(*)-COUNT(EXT_SOURCE_3))::FLOAT/COUNT(*)*100,1) FROM CANCREDIT_DB.RAW.APPLICATION_TRAIN
+SELECT
+    'EXT_SOURCE_3',
+    COUNT(*) - COUNT(ext_source_3),
+    ROUND((COUNT(*) - COUNT(ext_source_3))::FLOAT / COUNT(*) * 100, 1)
+FROM cancredit_db.raw.application_train
 UNION ALL
-SELECT 'OCCUPATION_TYPE', COUNT(*)-COUNT(OCCUPATION_TYPE),
-    ROUND((COUNT(*)-COUNT(OCCUPATION_TYPE))::FLOAT/COUNT(*)*100,1) FROM CANCREDIT_DB.RAW.APPLICATION_TRAIN
+SELECT
+    'OCCUPATION_TYPE',
+    COUNT(*) - COUNT(occupation_type),
+    ROUND((COUNT(*) - COUNT(occupation_type))::FLOAT / COUNT(*) * 100, 1)
+FROM cancredit_db.raw.application_train
 ORDER BY null_pct DESC;
 -- EXT_SOURCE_1 is ~56% null, EXT_SOURCE_3 is ~25% null — document this for imputation decisions

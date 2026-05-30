@@ -1,0 +1,24 @@
+name: Daily Data Quality
+
+on:
+  schedule:
+    - cron: '0 9 * * 1-5'
+  workflow_dispatch:
+
+jobs:
+  dq-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+      - run: pip install great_expectations snowflake-sqlalchemy
+      - run: python -c "
+          import great_expectations as gx;
+          ctx = gx.get_context();
+          result = ctx.run_checkpoint('cancredit_daily');
+          assert result.success, 'Data quality check failed'
+          "
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}

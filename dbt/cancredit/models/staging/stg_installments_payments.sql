@@ -1,18 +1,17 @@
 {{ config(materialized='view') }}
 
 SELECT
-    SK_ID_CURR                                                        AS applicant_id,
-    SK_ID_PREV                                                        AS prev_loan_id,
-    NUM_INSTALMENT_VERSION                                            AS instalment_version,
-    NUM_INSTALMENT_NUMBER                                             AS instalment_number,
-    DAYS_INSTALMENT                                                   AS days_instalment,
-    DAYS_ENTRY_PAYMENT                                                AS days_payment_made,
-    AMT_INSTALMENT                                                    AS amount_due,
-    AMT_PAYMENT                                                       AS amount_paid,
-    GREATEST(DAYS_ENTRY_PAYMENT - DAYS_INSTALMENT, 0)                AS days_late,
-    CASE WHEN DAYS_ENTRY_PAYMENT > DAYS_INSTALMENT THEN TRUE
-         ELSE FALSE END                                               AS is_late,
-    ROUND(AMT_PAYMENT / NULLIF(AMT_INSTALMENT, 0), 4)               AS payment_ratio,
-    CURRENT_TIMESTAMP()                                               AS dbt_loaded_at
+    SK_ID_CURR AS APPLICANT_ID,
+    SK_ID_PREV AS PREV_LOAN_ID,
+    NUM_INSTALMENT_VERSION AS INSTALMENT_VERSION,
+    NUM_INSTALMENT_NUMBER AS INSTALMENT_NUMBER,
+    DAYS_INSTALMENT,
+    DAYS_ENTRY_PAYMENT AS DAYS_PAYMENT_MADE,
+    AMT_INSTALMENT AS AMOUNT_DUE,
+    AMT_PAYMENT AS AMOUNT_PAID,
+    GREATEST(DAYS_ENTRY_PAYMENT - DAYS_INSTALMENT, 0) AS DAYS_LATE,
+    COALESCE(DAYS_ENTRY_PAYMENT > DAYS_INSTALMENT, FALSE) AS IS_LATE,
+    ROUND(AMT_PAYMENT / NULLIF(AMT_INSTALMENT, 0), 4) AS PAYMENT_RATIO,
+    CURRENT_TIMESTAMP() AS DBT_LOADED_AT
 FROM {{ source('raw', 'installments_payments') }}
 WHERE SK_ID_CURR IS NOT NULL

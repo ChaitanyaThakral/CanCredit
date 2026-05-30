@@ -1,11 +1,11 @@
 {{ config(materialized='view') }}
 
 SELECT
-    OBS_DATE                                  AS obs_date,
-    TRY_TO_NUMBER(CAOVERAGE)                  AS overnight_rate,
-    TRY_TO_NUMBER(AUCAUSBOND2Y)               AS bond_yield_2yr,
-    TRY_TO_NUMBER(AUCAUSBOND10Y)              AS bond_yield_10yr,
-    TRY_TO_NUMBER(FXCADUSD)                   AS fx_cad_usd,
-    TRY_TO_NUMBER(CPIALL)                     AS cpi_all,
-    CURRENT_TIMESTAMP()                       AS dbt_loaded_at
+    OBS_DATE,
+    TRY_TO_NUMBER(CAOVERAGE) AS OVERNIGHT_RATE,
+    TRY_TO_NUMBER(AUCAUSBOND2Y) AS BOND_YIELD_2YR,
+    TRY_TO_NUMBER(AUCAUSBOND10Y) AS BOND_YIELD_10YR,
+    TRY_TO_NUMBER(FXCADUSD) AS FX_CAD_USD,
+    TRY_TO_NUMBER(CPIALL) AS CPI_ALL,
+    CURRENT_TIMESTAMP() AS DBT_LOADED_AT
 FROM {{ source('raw', 'boc_macro') }}

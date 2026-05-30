@@ -1,0 +1,20 @@
+name: API Tests
+
+on:
+  pull_request:
+    branches: [main]
+    paths: ['api/**', 'model/**', 'tests/**']
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with: {python-version: '3.11'}
+      - run: pip install fastapi uvicorn pytest httpx joblib xgboost shap scikit-learn pandas
+      - name: Start API and run tests
+        run: |
+          uvicorn api.main:app --host 0.0.0.0 --port 8000 &
+          sleep 5
+          pytest tests/test_api.py -v --tb=short

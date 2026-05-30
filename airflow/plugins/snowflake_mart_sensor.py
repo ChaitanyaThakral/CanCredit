@@ -4,6 +4,7 @@ Purpose: Pokes a Snowflake table and returns True when row count >= min_rows.
 Used to guard dbt_marts against partial intermediate builds — if intermediate
 tables haven't populated yet the mart run is deferred rather than failing.
 """
+
 from airflow.sensors.base import BaseSensorOperator
 from airflow.providers.snowflake.hooks.snowflake import SnowflakeHook
 
@@ -18,13 +19,13 @@ class MartRowCountSensor(BaseSensorOperator):
         conn_id:  Airflow Snowflake connection ID (default: snowflake_cancredit).
     """
 
-    template_fields = ('table', 'min_rows')
+    template_fields = ("table", "min_rows")
 
     def __init__(
         self,
         table: str,
         min_rows: int,
-        conn_id: str = 'snowflake_cancredit',
+        conn_id: str = "snowflake_cancredit",
         **kwargs,
     ):
         super().__init__(**kwargs)
@@ -38,6 +39,8 @@ class MartRowCountSensor(BaseSensorOperator):
         count = result[0] if result else 0
         self.log.info(
             "MartRowCountSensor | %s: %s rows (threshold: %s)",
-            self.table, f"{count:,}", f"{self.min_rows:,}",
+            self.table,
+            f"{count:,}",
+            f"{self.min_rows:,}",
         )
         return count >= self.min_rows

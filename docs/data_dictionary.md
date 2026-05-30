@@ -2,7 +2,7 @@
 
 ## APPLICATION_TRAIN
 
-This table contains the main training dataset with information about each loan application. 
+This table contains the main training dataset with information about each loan application.
 
 | Column Name | Type | Description |
 |---|---|---|
