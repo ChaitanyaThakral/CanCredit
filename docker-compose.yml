@@ -1,11 +1,69 @@
 version: '3.8'
 
+# CanCredit — Local Development Stack
+# Usage:
+#   docker-compose up -d redis        # Start only Redis (for API caching)
+#   docker-compose up -d              # Start full stack (Redis + API)
+#   docker-compose down               # Stop all
+
 services:
+
+  # ── Redis — API response cache ───────────────────────────────────────────
+  redis:
+    image: redis:7.2-alpine
+    container_name: cancredit_redis
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # ── FastAPI scoring API ───────────────────────────────────────────────────
   api:
-    build: ./api
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    container_name: cancredit_api
     ports:
       - "8000:8000"
     environment:
       - SNOWFLAKE_ACCOUNT=${SNOWFLAKE_ACCOUNT}
       - SNOWFLAKE_USER=${SNOWFLAKE_USER}
       - SNOWFLAKE_PASSWORD=${SNOWFLAKE_PASSWORD}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./model:/app/model:ro
+    restart: unless-stopped
+
+  # ── MLflow tracking server ────────────────────────────────────────────────
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.10.0
+    container_name: cancredit_mlflow
+    ports:
+      - "5000:5000"
+    command: >
+      mlflow server
+      --backend-store-uri /mlflow/runs
+      --default-artifact-root /mlflow/artifacts
+      --host 0.0.0.0
+      --port 5000
+    volumes:
+      - mlflow_data:/mlflow
+    restart: unless-stopped
+
+volumes:
+  redis_data:
+  mlflow_data:
+
+# ── Notes ────────────────────────────────────────────────────────────────────
+# Airflow is WSL/Linux only — run via airflow/setup_airflow.sh on WSL.
+# Snowflake connection: create a .env file from .env.example at project root.
