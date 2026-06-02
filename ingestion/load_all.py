@@ -1,5 +1,7 @@
 from snowflake_loader import load_csv_chunked
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 CONFIG = {
     "account": os.environ.get("SNOWFLAKE_ACCOUNT", ""),
