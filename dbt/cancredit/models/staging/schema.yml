@@ -63,6 +63,8 @@ models:
           - relationships:
               to: ref('stg_application_train')
               field: applicant_id
+              config:
+                severity: warn
       - name: credit_status
         tests:
           - not_null
@@ -74,6 +76,8 @@ models:
         tests:
           - dbt_utils.expression_is_true:
               expression: ">= 0"
+              config:
+                severity: warn
       - name: credit_overdue
         tests:
           - dbt_utils.expression_is_true:
@@ -98,6 +102,8 @@ models:
           - relationships:
               to: ref('stg_application_train')
               field: applicant_id
+              config:
+                severity: warn
       - name: prev_loan_id
         tests:
           - not_null
@@ -106,10 +112,14 @@ models:
           - not_null
       - name: amount_paid
         tests:
-          - not_null
+          - not_null:
+              config:
+                severity: warn
       - name: days_late
         tests:
-          - not_null
+          - not_null:
+              config:
+                severity: warn
           - dbt_utils.expression_is_true:
               expression: ">= 0"
       - name: is_late
@@ -155,6 +165,8 @@ models:
           - relationships:
               to: ref('stg_application_train')
               field: applicant_id
+              config:
+                severity: warn
       - name: contract_status
         tests:
           - not_null

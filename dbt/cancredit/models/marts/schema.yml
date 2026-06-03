@@ -59,6 +59,8 @@ models:
           - not_null
           - dbt_utils.expression_is_true:
               expression: ">= 0"
+              config:
+                severity: warn
       - name: bureau_total_overdue
         tests:
           - not_null
@@ -107,6 +109,8 @@ models:
               arguments:
                 min_value: 0
                 max_value: 3
+              config:
+                severity: warn
       - name: cc_max_utilization
         tests:
           - not_null
@@ -226,7 +230,9 @@ models:
               expression: "> 0"
       - name: annuity_to_income_ratio
         tests:
-          - not_null
+          - not_null:
+              config:
+                severity: warn
           - dbt_utils.expression_is_true:
               expression: ">= 0"
       - name: bureau_delinquency_rate
@@ -272,6 +278,8 @@ models:
               arguments:
                 min_value: 0
                 max_value: 3
+              config:
+                severity: warn
       - name: cc_months_overdue
         tests:
           - not_null

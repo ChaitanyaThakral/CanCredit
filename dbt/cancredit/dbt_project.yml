@@ -19,3 +19,13 @@ models:
   cancredit:
     staging:
       +materialized: view
+      +schema: STAGING
+    intermediate:
+      +materialized: table
+      +schema: INTERMEDIATE
+    marts:
+      +materialized: table
+      +schema: MARTS
+      ml_features_training:
+        +schema: ML_FEATURES
+        +materialized: table

@@ -1,8 +1,3 @@
-{% test is_between(model, column_name, min_value, max_value) %}
-
-    select *
-    from {{ model }}
-    where {{ column_name }} < {{ min_value }}
-       or {{ column_name }} > {{ max_value }}
-
-{% endtest %}
+-- DEPRECATED: The is_between generic test is defined in macros/test_is_between.sql
+-- dbt automatically discovers generic tests from macros/ directory.
+-- This file is intentionally left as a comment to prevent duplicate registration.

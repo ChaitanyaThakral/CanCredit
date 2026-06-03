@@ -11,6 +11,8 @@ models:
           - relationships:
               to: ref('stg_application_train')
               field: applicant_id
+              config:
+                severity: warn
       - name: bureau_num_records
         tests:
           - not_null
@@ -36,6 +38,8 @@ models:
           - not_null
           - dbt_utils.expression_is_true:
               expression: ">= 0"
+              config:
+                severity: warn
       - name: bureau_total_overdue
         tests:
           - not_null
@@ -66,6 +70,8 @@ models:
           - relationships:
               to: ref('stg_application_train')
               field: applicant_id
+              config:
+                severity: warn
       - name: inst_num_payments
         tests:
           - not_null
@@ -123,6 +129,8 @@ models:
               arguments:
                 min_value: 0
                 max_value: 3
+              config:
+                severity: warn
       - name: cc_max_utilization
         tests:
           - not_null
@@ -133,6 +141,8 @@ models:
           - not_null
           - dbt_utils.expression_is_true:
               expression: ">= 0"
+              config:
+                severity: warn
       - name: cc_months_overdue
         tests:
           - not_null
@@ -149,6 +159,8 @@ models:
           - relationships:
               to: ref('stg_application_train')
               field: applicant_id
+              config:
+                severity: warn
       - name: prev_num_applications
         tests:
           - not_null

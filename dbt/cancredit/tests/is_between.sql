@@ -1,0 +1,4 @@
+-- DEPRECATED: This file was a stub. The canonical `is_between` generic test
+-- is defined in macros/test_is_between.sql.
+-- dbt will find it automatically from the macros/ directory.
+-- This file is intentionally empty to avoid duplicate test registration.
