@@ -68,8 +68,10 @@ import shap
 explainer = shap.TreeExplainer(model)
 
 # Redis for caching
+REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
+REDIS_PORT = int(os.getenv("REDIS_PORT", 6379))
 try:
-    cache = redis.Redis(host="localhost", port=6379, decode_responses=True)
+    cache = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True)
     cache.ping()
     CACHE_ENABLED = True
 except:
