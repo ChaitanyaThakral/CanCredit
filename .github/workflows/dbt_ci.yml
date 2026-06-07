@@ -15,8 +15,8 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dbt
-        run: pip install dbt-snowflake==1.7.0
+      - name: Install dbt + sqlfluff
+        run: pip install dbt-snowflake==1.7.0 sqlfluff sqlfluff-templater-dbt
 
       - name: Configure dbt profile
         run: |
@@ -43,5 +43,29 @@ jobs:
       - name: dbt compile
         run: dbt compile --project-dir dbt/cancredit
 
-      - name: dbt test staging
+      - name: dbt test — staging layer
         run: dbt test --project-dir dbt/cancredit --select staging
+
+      - name: dbt run — intermediate layer
+        run: dbt run --project-dir dbt/cancredit --select intermediate
+
+      - name: dbt test — intermediate layer
+        run: dbt test --project-dir dbt/cancredit --select intermediate
+
+      - name: dbt run — marts layer
+        run: dbt run --project-dir dbt/cancredit --select marts
+
+      - name: dbt test — marts layer
+        run: dbt test --project-dir dbt/cancredit --select marts
+
+      - name: sqlfluff lint
+        run: |
+          sqlfluff lint dbt/cancredit/models/ \
+            --dialect snowflake \
+            --templater dbt \
+            --exclude-rules L016,L034 \
+            --warn-unused-ignores
+        continue-on-error: true  # Lint failures are warnings, not blockers
+
+      - name: dbt docs generate
+        run: dbt docs generate --project-dir dbt/cancredit
