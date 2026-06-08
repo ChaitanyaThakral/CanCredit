@@ -11,7 +11,7 @@ CONFIG = {
 
 TABLES = {
     "APPLICATION_TRAIN": "data/home-credit/application_train.csv",
-    "APPLICATION_TEST": "data/home-credit/application_test.csv",
+
     "BUREAU": "data/home-credit/bureau.csv",
     "BUREAU_BALANCE": "data/home-credit/bureau_balance.csv",
     "PREVIOUS_APPLICATION": "data/home-credit/previous_application.csv",

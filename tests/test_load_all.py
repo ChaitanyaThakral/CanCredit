@@ -23,7 +23,6 @@ class TestLoadAllConstants:
 
         expected = {
             "APPLICATION_TRAIN",
-            "APPLICATION_TEST",
             "BUREAU",
             "BUREAU_BALANCE",
             "PREVIOUS_APPLICATION",
@@ -142,7 +141,6 @@ class TestLoadAllMainLoop:
         fake_data_dir.mkdir(parents=True)
         csv_names = {
             "APPLICATION_TRAIN": "application_train.csv",
-            "APPLICATION_TEST": "application_test.csv",
             "BUREAU": "bureau.csv",
             "BUREAU_BALANCE": "bureau_balance.csv",
             "PREVIOUS_APPLICATION": "previous_application.csv",
