@@ -15,6 +15,9 @@ jobs:
           python-version: '3.11'
       - run: pip install great_expectations snowflake-sqlalchemy
       - run: python -c "
+          exec(open('great_expectations/setup_datasource.py').read());
+          exec(open('great_expectations/build_expectations.py').read());
+          exec(open('great_expectations/setup_checkpoint.py').read());
           import great_expectations as gx;
           ctx = gx.get_context();
           result = ctx.run_checkpoint('cancredit_daily');
