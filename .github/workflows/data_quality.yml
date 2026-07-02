@@ -14,7 +14,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install dependencies
-        run: pip install --upgrade pip great_expectations snowflake-sqlalchemy
+        run: pip install --upgrade pip "great_expectations==0.18.19" "snowflake-sqlalchemy==1.5.1" "snowflake-connector-python[pandas]"
 
       - name: Run data quality checks
         run: |
