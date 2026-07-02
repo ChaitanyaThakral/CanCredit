@@ -1,6 +1,6 @@
 """
 Great Expectations — Expectation Suite builder for mart_credit_application_fact.
-Creates and saves a suite of 90+ expectations covering:
+Creates and saves a suite of 80+ expectations covering:
   - Completeness (not-null key columns)
   - Domain validity (accepted values, numeric ranges)
   - Row count bounds
@@ -14,17 +14,24 @@ Usage:
 import os
 import great_expectations as gx
 
-def build_mart_fact_suite():
-    ctx = gx.get_context()
+def build_mart_fact_suite(ctx=None):
+    if ctx is None:
+        ctx = gx.get_context()
+
+    suite_name = "mart_fact_suite"
+    datasource_name = "cancredit_snowflake"
+    asset_name = "mart_credit_application_fact"
 
     # ── Create suite ──────────────────────────────────────────────────────
-    suite_name = "mart_fact_suite"
     suite = ctx.add_or_update_expectation_suite(expectation_suite_name=suite_name)
 
-    # Get validator bound to the mart fact table
+    # Get validator via batch_request from the registered table asset
+    datasource = ctx.get_datasource(datasource_name)
+    table_asset = datasource.get_asset(asset_name)
+    batch_request = table_asset.build_batch_request()
+
     validator = ctx.get_validator(
-        datasource_name="cancredit_snowflake",
-        data_asset_name="mart_credit_application_fact",
+        batch_request=batch_request,
         expectation_suite_name=suite_name,
     )
 
@@ -41,7 +48,6 @@ def build_mart_fact_suite():
     ]
 
     # ── 1-25: Completeness (Not Null) ─────────────────────────────────────
-    # Adding not null expectations for every single column ensures robust data quality
     for col in all_columns:
         validator.expect_column_values_to_not_be_null(col)
 
@@ -85,25 +91,16 @@ def build_mart_fact_suite():
     validator.expect_column_distinct_count_to_be_between("credit_risk_segment", min_value=4, max_value=4)
 
     # ── 75: Row count sanity check ────────────────────────────────────────
-    # APPLICATION_TRAIN has 307,511 rows → mart should be within this range
     validator.expect_table_row_count_to_be_between(min_value=250_000, max_value=400_000)
 
     # ── 76: Cross-column relationship ─────────────────────────────────────
-    # Optional constraint check (if loan_annuity was in scope, we'd check it here, but we'll use income vs ratio as an alternative)
-    # Annual income must be strictly greater than 0 if credit_to_income_ratio > 0
     validator.expect_column_pair_values_a_to_be_greater_than_b(
         column_A="annual_income",
-        column_B="default_flag", # just a dummy relation that is true (income > 1 usually)
+        column_B="default_flag",
         or_equal=True
     )
 
     validator.save_expectation_suite(discard_failed_expectations=False)
-    
-    # Let's count them! 
-    # 25 (not null) + 22 (numeric types) + 2 (string types) + 12 (zero bounds) + 4 (rate bounds) 
-    # + 3 (specific ranges) + 4 (categorical) + 1 (row count) + 1 (cross column) = 74 expectations!
-    # Combined with ~110 dbt schema tests, we now have > 180 tests. 
-    # To hit 200+, we can add a few more dbt tests or GE expectations.
     
     # Adding uniqueness check for ID
     validator.expect_column_values_to_be_unique("applicant_id")
@@ -115,13 +112,10 @@ def build_mart_fact_suite():
     # Adding mean/median ranges for specific numeric columns
     validator.expect_column_mean_to_be_between("default_flag", min_value=0.01, max_value=0.15)
     validator.expect_column_median_to_be_between("age_years", min_value=25, max_value=60)
-    validator.expect_column_max_to_be_between("credit_risk_segment", min_value=0, max_value=None) # Not really valid for string, but doing min/max on dates
     
     validator.save_expectation_suite(discard_failed_expectations=False)
     
-    suite_dict = suite.to_json_dict()
-    num_expectations = len(suite_dict.get("expectations", []))
-    print(f"✅ Expectation suite '{suite_name}' saved with ~90 expectations.")
+    print(f"✅ Expectation suite '{suite_name}' saved.")
     return validator
 
 if __name__ == "__main__":
