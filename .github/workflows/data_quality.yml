@@ -17,16 +17,7 @@ jobs:
         run: pip install --upgrade pip "great_expectations==0.18.19" "snowflake-sqlalchemy==1.5.1" "snowflake-connector-python[pandas]"
 
       - name: Run data quality checks
-        run: |
-          python - <<'EOF'
-          exec(open('great_expectations/setup_datasource.py').read())
-          exec(open('great_expectations/build_expectations.py').read())
-          exec(open('great_expectations/setup_checkpoint.py').read())
-          import great_expectations as gx
-          ctx = gx.get_context()
-          result = ctx.run_checkpoint('cancredit_daily')
-          assert result.success, 'Data quality check failed'
-          EOF
+        run: python great_expectations/run_dq.py
         env:
           SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
           SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
