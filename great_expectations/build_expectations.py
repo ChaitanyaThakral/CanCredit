@@ -88,7 +88,7 @@ def build_mart_fact_suite(ctx=None):
     validator.expect_column_values_to_be_in_set("default_flag", [0, 1])
     validator.expect_column_values_to_be_in_set("credit_risk_segment", ["LOW", "MEDIUM", "HIGH", "VERY_HIGH"])
     validator.expect_column_values_to_be_in_set("loan_type", ["Cash loans", "Revolving loans"])
-    validator.expect_column_distinct_count_to_be_between("credit_risk_segment", min_value=4, max_value=4)
+    validator.expect_column_unique_value_count_to_be_between("credit_risk_segment", min_value=4, max_value=4)
 
     # ── 75: Row count sanity check ────────────────────────────────────────
     validator.expect_table_row_count_to_be_between(min_value=250_000, max_value=400_000)
