@@ -25,7 +25,7 @@ CHECKPOINT_NAME = "cancredit_daily"
 ctx = gx.get_context()
 
 # ── 1. Register Snowflake datasource ──────────────────────────────────────
-ctx.sources.add_snowflake(
+datasource = ctx.sources.add_snowflake(
     name=DATASOURCE_NAME,
     account=ACCOUNT,
     user=USER,
@@ -35,14 +35,20 @@ ctx.sources.add_snowflake(
     warehouse="CANCREDIT_WH",
     role="SYSADMIN",
 )
-print(f"✅ Datasource '{DATASOURCE_NAME}' registered.")
+
+# Register the mart table as a data asset
+table_asset = datasource.add_table_asset(
+    name=ASSET_NAME,
+    table_name="MART_CREDIT_APPLICATION_FACT",
+)
+batch_request = table_asset.build_batch_request()
+print(f"✅ Datasource '{DATASOURCE_NAME}' + asset '{ASSET_NAME}' registered.")
 
 # ── 2. Build expectation suite ────────────────────────────────────────────
 suite = ctx.add_or_update_expectation_suite(expectation_suite_name=SUITE_NAME)
 
 validator = ctx.get_validator(
-    datasource_name=DATASOURCE_NAME,
-    data_asset_name=ASSET_NAME,
+    batch_request=batch_request,
     expectation_suite_name=SUITE_NAME,
 )
 
